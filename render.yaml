@@ -1,0 +1,45 @@
+services:
+  # Backend Service
+  - type: web
+    name: urbanfix-backend
+    runtime: node
+    plan: free
+    region: oregon
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: FRONTEND_URL
+        value: https://urbanfix-frontend.onrender.com
+    healthCheckPath: /api/health
+
+  # Frontend Service
+  - type: static-site
+    name: urbanfix-frontend
+    runtime: npm
+    plan: free
+    region: oregon
+    rootDir: client/worker-booking-front
+    buildCommand: npm run build
+    publishDirectory: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://urbanfix-backend.onrender.com/api
+
+    # Routes for SPA
+    routes:
+      - path: /*
+        destination: /index.html
+        status: 200
