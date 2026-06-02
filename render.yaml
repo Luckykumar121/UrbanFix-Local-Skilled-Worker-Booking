@@ -41,3 +41,24 @@ services:
     routes:
       - path: /*
         destination: /index.html
+    healthCheckPath: /api/health
+
+  # Frontend Service
+  - type: static-site
+    name: urbanfix-frontend
+    runtime: npm
+    plan: free
+    region: oregon
+    rootDir: client/worker-booking-front
+    buildCommand: npm run build
+    publishDirectory: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://urbanfix-backend.onrender.com/api
+
+    # Routes for SPA
+    routes:
+      - path: /*
+        destination: /index.html
+        status: 200
+>>>>>>> daaab46da00b5fc018d506b680843142187f4f61
