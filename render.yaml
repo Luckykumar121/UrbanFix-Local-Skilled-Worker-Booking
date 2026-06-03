@@ -11,23 +11,23 @@ services:
       - key: NODE_ENV
         value: production
       - key: MONGODB_URI
-        value: ""
+        sync: false
       - key: JWT_SECRET
-        value: ""
+        sync: false
       - key: EMAIL_USER
-        value: ""
+        sync: false
       - key: EMAIL_PASS
-        value: ""
+        sync: false
       - key: FRONTEND_URL
         value: https://urbanfix-frontend.onrender.com
 
   - type: static-site
     name: urbanfix-frontend
-    runtime: npm
+    runtime: static
     region: oregon
     plan: free
     rootDir: client/worker-booking-front
-    buildCommand: npm run build
+    buildCommand: npm install && npm run build
     publishDirectory: dist
     envVars:
       - key: VITE_API_URL
