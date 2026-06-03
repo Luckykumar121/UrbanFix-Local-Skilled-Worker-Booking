@@ -10,16 +10,14 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 5000
       - key: MONGODB_URI
-        sync: false
+        value: ""
       - key: JWT_SECRET
-        sync: false
+        value: ""
       - key: EMAIL_USER
-        sync: false
+        value: ""
       - key: EMAIL_PASS
-        sync: false
+        value: ""
       - key: FRONTEND_URL
         value: https://urbanfix-frontend.onrender.com
 
@@ -34,6 +32,3 @@ services:
     envVars:
       - key: VITE_API_URL
         value: https://urbanfix-backend.onrender.com/api
-    routes:
-      - path: /*
-        destination: /index.html
