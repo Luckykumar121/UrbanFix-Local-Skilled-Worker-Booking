@@ -7,7 +7,7 @@ function Category_count() {
   useEffect(() => {
     const fetchCounts = async () => {
       const res = await axios.get(
-        "http://localhost:5000/api/workers/category-counts",
+        "https://urbanfix-backend-production.up.railway.app/api/workers/category-counts",
       );
 
       // convert array → object

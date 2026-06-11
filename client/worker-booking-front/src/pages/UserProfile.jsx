@@ -65,10 +65,13 @@ function UserProfile() {
   const fetchProfile = async () => {
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:5000/auth/profile", {
-        method: "GET",
-        headers: getAuthHeaders(),
-      });
+      const response = await fetch(
+        "https://urbanfix-backend-production.up.railway.app/auth/profile",
+        {
+          method: "GET",
+          headers: getAuthHeaders(),
+        },
+      );
 
       if (!response.ok) {
         throw new Error("Failed to fetch profile");
@@ -96,10 +99,13 @@ function UserProfile() {
 
   const fetchWorkerProfile = async () => {
     try {
-      const response = await fetch("http://localhost:5000/workers/my-profile", {
-        method: "GET",
-        headers: getAuthHeaders(),
-      });
+      const response = await fetch(
+        "https://urbanfix-backend-production.up.railway.app/workers/my-profile",
+        {
+          method: "GET",
+          headers: getAuthHeaders(),
+        },
+      );
 
       if (response.ok) {
         const data = await response.json();
@@ -150,7 +156,7 @@ function UserProfile() {
     try {
       setSaving(true);
       const response = await fetch(
-        "http://localhost:5000/auth/update-profile",
+        "https://urbanfix-backend-production.up.railway.app/auth/update-profile",
         {
           method: "PUT",
           headers: getAuthHeaders(),
@@ -190,7 +196,7 @@ function UserProfile() {
     try {
       setSaving(true);
       const response = await fetch(
-        "http://localhost:5000/workers/update-profile",
+        "https://urbanfix-backend-production.up.railway.app/workers/update-profile",
         {
           method: "PUT",
           headers: getAuthHeaders(),
@@ -236,7 +242,7 @@ function UserProfile() {
     try {
       setSaving(true);
       const response = await fetch(
-        "http://localhost:5000/auth/change-password",
+        "https://urbanfix-backend-production.up.railway.app/auth/change-password",
         {
           method: "POST",
           headers: getAuthHeaders(),

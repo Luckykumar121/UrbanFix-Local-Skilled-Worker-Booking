@@ -13,13 +13,16 @@ function VerifyEmail() {
     if (!code) {
       return notifyerror("Please enter the verification code");
     }
-    const response = await fetch("/api/auth/verify-email", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
+    const response = await fetch(
+      "https://urbanfix-backend-production.up.railway.app/auth/verify-email",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ code }),
       },
-      body: JSON.stringify({ code }),
-    });
+    );
     const result = await response.json();
     if (response.ok) {
       notifysucess(result.message || "Email verified successfully");

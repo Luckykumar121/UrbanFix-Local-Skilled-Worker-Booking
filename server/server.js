@@ -15,7 +15,10 @@ connectDB();
 
 app.use(
   cors({
-    origin: "https://urbanfixes.netlify.app",
+    origin: [
+      "https://urbanfixes.netlify.app",
+      "https://urbanfix-backend-production.up.railway.app",
+    ],
     credentials: true,
   }),
 ); // Enable CORS for all routes

@@ -44,7 +44,8 @@ function Workerform() {
     }
 
     try {
-      const url = "http://localhost:5000/workers/profile";
+      const url =
+        "https://urbanfix-backend-production.up.railway.app/workers/profile";
       const response = await fetch(url, {
         method: "POST",
         headers: getAuthHeaders(), // Automatically includes JWT token

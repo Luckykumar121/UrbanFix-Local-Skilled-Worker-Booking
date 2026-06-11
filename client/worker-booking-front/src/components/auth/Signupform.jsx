@@ -30,7 +30,8 @@ function SignupForm() {
       return notifyerror("Please fill all the fields");
     }
     try {
-      const url = "/api/auth/register";
+      const url =
+        "https://urbanfix-backend-production.up.railway.app/auth/register";
       const response = await fetch(url, {
         method: "POST",
         headers: {

@@ -42,13 +42,16 @@ function Contact() {
     try {
       setLoading(true);
       // Backend endpoint to send email
-      const response = await fetch("http://localhost:5000/contact/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://urbanfix-backend-production.up.railway.app/contact/send",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
         },
-        body: JSON.stringify(formData),
-      });
+      );
 
       const data = await response.json();
 

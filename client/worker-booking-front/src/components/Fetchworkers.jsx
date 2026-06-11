@@ -22,6 +22,7 @@ function Fetchworkers({ category = null, limit = null }) {
   // Get logged-in user info from localStorage
   const storedUser = localStorage.getItem("user");
   const user = storedUser ? JSON.parse(storedUser) : null;
+  const API_BASE_URL = "https://urbanfix-backend-production.up.railway.app";
 
   const handlereq = async (workerId) => {
     if (!user) {
@@ -35,7 +36,7 @@ function Fetchworkers({ category = null, limit = null }) {
 
     try {
       await axios.post(
-        "http://localhost:5000/workers/requests",
+        `${API_BASE_URL}/workers/requests`,
         { workerId },
         { headers: getAuthHeaders() },
       );
@@ -73,10 +74,9 @@ function Fetchworkers({ category = null, limit = null }) {
     if (!user) return;
 
     try {
-      const bookingsRes = await axios.get(
-        "http://localhost:5000/workers/bookings",
-        { headers: getAuthHeaders() },
-      );
+      const bookingsRes = await axios.get(`${API_BASE_URL}/workers/bookings`, {
+        headers: getAuthHeaders(),
+      });
       const bookings = bookingsRes.data.bookings || [];
 
       // Create a map of worker profile ID to status
@@ -97,7 +97,7 @@ function Fetchworkers({ category = null, limit = null }) {
       setLoading(true);
       setError("");
       try {
-        let url = "http://localhost:5000/workers/list";
+        let url = `${API_BASE_URL}/workers/list`;
         const params = new URLSearchParams();
         if (category) params.append("category", category);
         if (limit) params.append("limit", limit);

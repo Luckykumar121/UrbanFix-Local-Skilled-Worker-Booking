@@ -26,9 +26,12 @@ function Booking() {
 
     const fetchBookings = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/workers/bookings", {
-          headers: getAuthHeaders(),
-        });
+        const res = await axios.get(
+          "https://urbanfix-backend-production.up.railway.app/workers/bookings",
+          {
+            headers: getAuthHeaders(),
+          },
+        );
         setBookings(res.data.bookings || []);
       } catch (err) {
         setError(err.response?.data?.message || "Failed to load bookings");

@@ -20,7 +20,8 @@ function LoginForm() {
     }
 
     try {
-      const url = "/api/auth/login";
+      const url =
+        "https://urbanfix-backend-production.up.railway.app/auth/login";
       const response = await fetch(url, {
         method: "POST",
         headers: {

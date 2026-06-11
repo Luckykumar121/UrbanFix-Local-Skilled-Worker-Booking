@@ -32,11 +32,14 @@ function Request() {
       try {
         let url = "";
         if (storedRole === "worker") {
-          url = "http://localhost:5000/workers/requests";
+          url =
+            "https://urbanfix-backend-production.up.railway.app/workers/requests";
         } else if (storedRole === "customer") {
-          url = "http://localhost:5000/workers/bookings";
+          url =
+            "https://urbanfix-backend-production.up.railway.app/workers/bookings";
         } else if (storedRole === "admin") {
-          url = "http://localhost:5000/admin/requests";
+          url =
+            "https://urbanfix-backend-production.up.railway.app/admin/requests";
         } else {
           throw new Error("Unsupported user role for requests page.");
         }
@@ -70,7 +73,7 @@ function Request() {
   const handleStatusChange = async (requestId, status) => {
     try {
       await axios.put(
-        `http://localhost:5000/workers/requests/${requestId}`,
+        `https://urbanfix-backend-production.up.railway.app/workers/requests/${requestId}`,
         { status },
         { headers: getAuthHeaders() },
       );

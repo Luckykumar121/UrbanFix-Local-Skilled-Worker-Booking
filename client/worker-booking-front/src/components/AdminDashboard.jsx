@@ -11,7 +11,7 @@ const AdminDashboard = () => {
   const [userRole, setUserRole] = useState("customer");
   const [error, setError] = useState(null);
 
-  const API_BASE_URL = "http://localhost:5000";
+  const API_BASE_URL = "https://urbanfix-backend-production.up.railway.app";
 
   const availableTabsByRole = {
     admin: [
