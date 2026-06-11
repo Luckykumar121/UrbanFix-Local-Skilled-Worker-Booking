@@ -2,8 +2,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 function Footer() {
-  const navigate = useNavigate();
-
   return (
     <footer
       style={{

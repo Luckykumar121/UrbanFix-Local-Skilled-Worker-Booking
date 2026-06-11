@@ -41,7 +41,6 @@ function Navcompo() {
 
   const [user, setUser] = useState(null);
   const [loggedInUser, setLoggedInUser] = useState("");
-  const Navigate = useNavigate();
 
   useEffect(() => {
     const stored = localStorage.getItem("user");
@@ -66,7 +65,7 @@ function Navcompo() {
 
     setTimeout(() => {
       notifylogout("you have logged out !");
-      Navigate("/login");
+      navigate("/login");
     }, 1000);
   };
   return (
@@ -87,7 +86,7 @@ function Navcompo() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="http://localhost:5173/home">Home</Nav.Link>
+            <Nav.Link onClick={() => navigate("/home")}>Home</Nav.Link>
             <Nav.Link onClick={() => navigate("/about")}>About Us</Nav.Link>
             <Nav.Link onClick={() => navigate("/contact")}>Contact Us</Nav.Link>
             <NavDropdown title="More" id="navbarScrollingDropdown">
@@ -109,7 +108,7 @@ function Navcompo() {
             </NavDropdown>
             {!user && (
               <Nav.Link
-                href="http://localhost:5173/login"
+                onClick={() => navigate("/login")}
                 style={{
                   backgroundColor: "#6367FF",
                   borderRadius: "10%",
@@ -117,6 +116,7 @@ function Navcompo() {
                   height: "10%",
                   textAlign: "center",
                   color: "#ffff",
+                  cursor: "pointer",
                 }}
               >
                 Login
@@ -124,7 +124,7 @@ function Navcompo() {
             )}
             {user && (
               <Nav.Link
-                href="http://localhost:5173/login"
+                onClick={handlelogout}
                 style={{
                   backgroundColor: "#6367FF",
                   borderRadius: "10%",
@@ -132,8 +132,8 @@ function Navcompo() {
                   height: "10%",
                   textAlign: "center",
                   color: "#ffff",
+                  cursor: "pointer",
                 }}
-                onClick={handlelogout}
               >
                 Logout
               </Nav.Link>
