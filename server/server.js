@@ -18,6 +18,7 @@ app.use(
     origin: [
       "https://urbanfixes.netlify.app",
       "https://urbanfix-backend-production.up.railway.app",
+      "http://localhost:5173",
     ],
     credentials: true,
   }),
